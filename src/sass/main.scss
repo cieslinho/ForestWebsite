@@ -1,0 +1,204 @@
+@import '__colors.scss';
+@import '__components.scss';
+
+*,
+*::before,
+*::after {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
+	font-size: 62.5%;
+}
+
+body {
+	font-size: 1.6rem;
+	font-family: 'Raleway', sans-serif;
+	background-color: $white-color;
+}
+
+// NAV
+
+.nav {
+	position: sticky;
+	background-color: $white-color;
+	width: 100%;
+	&__navbar {
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+	}
+	&__brand {
+		margin-right: auto;
+		&-logo {
+			font-size: 3.7rem;
+			color: $black-color;
+			text-decoration: none;
+			i {
+				margin-right: 0.2em;
+			}
+		}
+	}
+
+	&__list {
+		display: flex;
+		align-items: center;
+	}
+	&__item {
+		padding: 2em;
+		color: black;
+		text-decoration: none;
+		height: 100%;
+		margin: 0 0.3em;
+	}
+	.active {
+		background-color: $black-color;
+		color: $white-color;
+	}
+}
+
+// HEADER
+
+.header {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: center;
+	height: 45vh;
+	background-image: url('../img/jungle-hq.jpg');
+	background-position: center;
+	background-size: cover;
+	color: $white-color;
+	z-index: 5;
+	&__title {
+		font-size: 2rem;
+		font-weight: lighter;
+	}
+	&__subtitle {
+		font-size: 4rem;
+		font-weight: bold;
+	}
+}
+
+// aboutus
+.aboutus {
+	&__boxes {
+		display: flex;
+		align-items: flex-start;
+		justify-content: center;
+	}
+	&__imgbox {
+		width: 50%;
+		margin-right: 3em;
+	}
+	&__img {
+		width: 100%;
+		height: 100%;
+	}
+	&__textbox {
+		width: 50%;
+		color: $black-color;
+		&-title {
+			font-size: 3rem;
+			font-weight: 700;
+			margin-bottom: 3rem;
+		}
+		&-description {
+			line-height: 180%;
+		}
+	}
+}
+
+// banner
+.banner {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-image: url('../img/child-hq.jpg');
+	background-position: center;
+	background-size: cover;
+	height: 40vh;
+	z-index: 20;
+	&__title {
+		padding: 1em 5em;
+		font-weight: 700;
+		font-size: 4rem;
+		border: 1px solid $white-color;
+		text-align: center;
+		color: $white-color;
+	}
+}
+
+// offer
+.offer {
+	&__select {
+		margin-bottom: 2em;
+		font-size: 2rem;
+		color: $black-color;
+		text-align: center;
+	}
+	&__cards {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	&__card {
+		padding: 2em 1em;
+		margin: 0.8em;
+		max-width: 300px;
+		width: 100%;
+		color: $black-color;
+		background: $white-color;
+		box-shadow: 0 0 7px $black-color;
+		border-radius: 5px;
+		text-align: center;
+		&-title {
+			font-size: 3rem;
+			font-weight: lighter;
+		}
+		&-price {
+			margin: 0.5em 0;
+			font-weight: 700;
+			font-size: 4rem;
+		}
+		&-option {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			margin-bottom: 1em;
+			&:last-child {
+				margin-bottom: 2em;
+			}
+			&--inactive {
+				color: $light-grey;
+			}
+			.icon {
+				margin-right: 1em;
+				color: $btn-color;
+				&--inactive {
+					color: $light-grey;
+				}
+			}
+		}
+		&-btn {
+			padding: 0.8em 4em;
+			background-color: $white-color;
+			box-shadow: 3px 3px 8px $black-color;
+			border-radius: 8px;
+			border: none;
+			cursor: pointer;
+			font-size: 1.5rem;
+			font-family: 'Raleway', sans-serif;
+			transition: background-color 0.3s, box-shadow 0.3s;
+			&:hover {
+				background-color: $btn-color;
+				box-shadow: 3px 3px 8px $btn-color;
+			}
+		}
+	}
+}
