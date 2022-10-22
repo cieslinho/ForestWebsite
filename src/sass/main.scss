@@ -1,5 +1,6 @@
 @import '__colors.scss';
 @import '__components.scss';
+@import '__mixins.scss';
 
 *,
 *::before,
@@ -23,9 +24,11 @@ body {
 // NAV
 
 .nav {
-	position: sticky;
-	background-color: $white-color;
+	position: fixed;
+	top: 0;
 	width: 100%;
+	background-color: $white-color;
+	z-index: 100000;
 	&__navbar {
 		display: flex;
 		align-items: center;
@@ -58,11 +61,25 @@ body {
 		background-color: $black-color;
 		color: $white-color;
 	}
+	&__btn {
+		padding: 0.5em;
+		border: none;
+		background-color: transparent;
+		border: 1px solid transparent;
+		cursor: pointer;
+		z-index: 50000;
+
+		&:focus {
+			outline: none;
+		}
+		@include navBtn;
+	}
 }
 
 // HEADER
 
 .header {
+	margin-top: 83px;
 	position: relative;
 	display: flex;
 	flex-direction: column;
@@ -141,11 +158,25 @@ body {
 		font-size: 2rem;
 		color: $black-color;
 		text-align: center;
+		&:last-child {
+			padding: 0.3em;
+			position: relative;
+			top: 50%;
+			left: 50%;
+			display: inline-block;
+			text-decoration: none;
+			transform: translate(-50%, -50%);
+			transition: 0.3s color, height 0.3s;
+			z-index: 5;
+			@include linkAnimation;
+		}
 	}
+
 	&__cards {
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		margin-bottom: 3em;
 	}
 	&__card {
 		padding: 2em 1em;
@@ -199,6 +230,219 @@ body {
 				background-color: $btn-color;
 				box-shadow: 3px 3px 8px $btn-color;
 			}
+		}
+	}
+}
+// footer
+.footer {
+	padding-top: 2em;
+	background-color: $footer-color;
+	&__top {
+		padding: 0 5em;
+		margin-bottom: 2em;
+	}
+
+	&__boxes {
+		display: flex;
+		align-items: flex-start;
+		justify-content: flex-start;
+	}
+	&__box {
+		padding: 1em;
+		margin: 1em 2em;
+		&:first-child {
+			margin-left: 0;
+		}
+		&--logo {
+			margin-right: auto;
+		}
+	}
+	&__logo {
+		display: flex;
+		text-decoration: none;
+		font-size: 3.5rem;
+		color: $black-color;
+		i {
+			margin-right: 0.25em;
+		}
+	}
+	&__title {
+		font-weight: bold;
+		font-size: 2rem;
+		margin-bottom: 1em;
+	}
+
+	&__text {
+		text-align: center;
+	}
+	hr {
+		border: 1px solid $light-grey;
+	}
+	&__list {
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		align-items: flex-start;
+		list-style: none;
+		&-item {
+			margin-bottom: 1em;
+		}
+	}
+	&__bottom {
+		padding: 1.5em 0;
+	}
+	&__author {
+		padding: 0.15em;
+		position: relative;
+		z-index: 5;
+		transition: background-color 0.3s, color 0.3s;
+		@include linkAnimation;
+		cursor: pointer;
+	}
+}
+
+//contact
+.contact {
+	&__boxes {
+		display: flex;
+		align-items: flex-start;
+		justify-content: center;
+	}
+	&__box {
+		&--form {
+			width: 40%;
+			margin-right: 2em;
+		}
+		&--map {
+			width: 60%;
+		}
+	}
+	&__text {
+		&:first-child {
+			margin-bottom: 0.8em;
+		}
+		color: $black-color;
+		font-size: 1.8rem;
+		i {
+			margin-right: 0.5em;
+		}
+		&--map {
+			color: $white-color;
+		}
+	}
+	&__top,
+	&__bottom {
+		display: flex;
+		flex-direction: column;
+	}
+	&__form {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+	&__wrapper {
+		margin-top: 1.5em;
+		padding: 2em 1.5em;
+		background-color: $black-color;
+		box-shadow: 0 0 10px $black-color;
+		border-radius: 8px;
+	}
+	&__input {
+		@include formField;
+	}
+	&__textarea {
+		@include formField;
+		min-height: 150px;
+		resize: vertical;
+	}
+	&__btn {
+		@include formBtn;
+	}
+	&__map {
+		margin-top: 1em;
+		width: 100%;
+	}
+}
+
+// media-querries
+
+@media (max-width: 767px) {
+	.nav {
+		padding: 0.8em 0;
+		&__list {
+			display: none;
+		}
+	}
+	.header {
+		margin-top: 70.91px;
+		background-image: url('../img/jungle-lq.jpg');
+		&__subtitle {
+			font-size: 3rem;
+		}
+	}
+	.aboutus {
+		&__boxes {
+			flex-direction: column;
+			align-items: center;
+		}
+		&__imgbox {
+			width: 100%;
+			margin-bottom: 1.5em;
+			margin-right: 0;
+		}
+		&__textbox {
+			width: 100%;
+		}
+	}
+	.banner {
+		background-image: url('../img/child-lq.jpg');
+		&__title {
+			padding: 2em;
+			font-size: 3rem;
+		}
+	}
+	.offer {
+		&__cards {
+			flex-direction: column;
+		}
+	}
+	.footer {
+		&__boxes {
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+		}
+		&__box {
+			align-items: center;
+			justify-content: center;
+			&:first-child {
+				margin: 1em 2em;
+			}
+			&--logo {
+				padding: 1em;
+			}
+		}
+		&__top {
+			padding: 0;
+		}
+		&__list {
+			align-items: center;
+			justify-content: center;
+		}
+	}
+	.contact {
+		&__boxes {
+			flex-direction: column;
+		}
+		&__box {
+			width: 100%;
+		}
+	}
+}
+@media (min-width: 768px) {
+	.nav {
+		&__btn {
+			display: none;
 		}
 	}
 }
