@@ -12,6 +12,7 @@
 
 html {
 	scroll-behavior: smooth;
+	scroll-padding-top: 70px;
 	font-size: 62.5%;
 }
 
@@ -21,7 +22,51 @@ body {
 	background-color: $white-color;
 }
 
+.scroll-block {
+	overflow-y: hidden;
+}
 // NAV
+
+.cookies {
+	bottom: 0;
+	position: fixed;
+	padding: 1em 0.5em;
+	display: block;
+	color: $black-color;
+	background-color: $footer-color;
+	box-shadow: 0 0 5px $black-color;
+	transition: bottom 0.5s;
+	z-index: 10000;
+	&__box {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+	}
+	&__text {
+		text-align: center;
+		margin-bottom: 0.5em;
+	}
+	&__btn {
+		padding: 0.5em 1em;
+		background-color: $black-color;
+		color: $white-color;
+		border-radius: 5px;
+		border: none;
+		border: 1px solid transparent;
+		cursor: pointer;
+		transition: background-color 0.3s, color 0.3s, border 0.3s;
+		&:hover {
+			background-color: $white-color;
+			color: $black-color;
+			border: 1px solid $black-color;
+		}
+	}
+}
+
+.hide-cookies {
+	bottom: -300px;
+}
 
 .nav {
 	position: fixed;
@@ -29,6 +74,7 @@ body {
 	width: 100%;
 	background-color: $white-color;
 	z-index: 100000;
+	box-shadow: 0 0 5px $black-color;
 	&__navbar {
 		display: flex;
 		align-items: center;
@@ -52,10 +98,57 @@ body {
 	}
 	&__item {
 		padding: 2em;
-		color: black;
+		color: $black-color;
 		text-decoration: none;
 		height: 100%;
-		margin: 0 0.3em;
+		transition: background-color 0.3s, color 0.3s;
+		&:hover {
+			background-color: $black-color;
+			color: $white-color;
+		}
+	}
+	&__mobile {
+		position: absolute;
+		display: flex;
+		flex-direction: column;
+		align-items: stretch;
+		justify-content: center;
+		background-color: $white-color;
+		height: 100vh;
+		width: 100vw;
+		top: 0;
+		right: -900px;
+		transition: right 0.4s;
+		&-item {
+			position: relative;
+			margin: 0.5em auto;
+			padding: 1em;
+			font-size: 2.2rem;
+			text-align: center;
+			color: $black-color;
+			width: 50%;
+			text-decoration: none;
+			transition: padding 0.2s;
+			&:hover::before {
+				width: 3px;
+			}
+			&:hover {
+				padding-left: 1.5em;
+			}
+			&::before {
+				position: absolute;
+				display: block;
+				content: '';
+				height: 100%;
+				background-color: $black-color;
+				width: 0px;
+				top: 0;
+				transition: 0.1s;
+			}
+		}
+	}
+	.show-menu {
+		right: 0;
 	}
 	.active {
 		background-color: $black-color;
@@ -219,7 +312,7 @@ body {
 		&-btn {
 			padding: 0.8em 4em;
 			background-color: $white-color;
-			box-shadow: 3px 3px 8px $black-color;
+			box-shadow: 0 0 5px $black-color;
 			border-radius: 8px;
 			border: none;
 			cursor: pointer;
@@ -228,7 +321,7 @@ body {
 			transition: background-color 0.3s, box-shadow 0.3s;
 			&:hover {
 				background-color: $btn-color;
-				box-shadow: 3px 3px 8px $btn-color;
+				box-shadow: 0 0 5px $btn-color;
 			}
 		}
 	}
@@ -442,6 +535,9 @@ body {
 @media (min-width: 768px) {
 	.nav {
 		&__btn {
+			display: none;
+		}
+		&__mobile {
 			display: none;
 		}
 	}
